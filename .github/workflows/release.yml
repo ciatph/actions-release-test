@@ -34,9 +34,7 @@ jobs:
         with:
           name: main-out
       - name: Extract Artifact Files
-        run: |
-          mkdir out
-          tar -zxvf build.tar.gz -C out
+        run: tar -zxvf build.tar.gz
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
