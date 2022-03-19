@@ -6,19 +6,36 @@ on:
 name: Upload Release Asset
 jobs:
   build:
-    name: Build and Upload Release Asset
+    name: Build and Package 
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Build app
+      - name: Build and package app
         run: |
-          echo 'Hello, world!' >> hello.txt
+          mkdir out
+          cp README.md out/
+          echo 'Hello, world!' >> out/hello.txt
+          tar cvfz build.tar.gz out/
+      - name: Archive Development Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: main-out
+          path: build.tar.gz
+          retention-days: 3
+
+  deploy:
+    name: Deploy and Upload Release Asset
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: main-out
       - name: Release with Notes
         uses: softprops/action-gh-release@v1
         with:
-          files: |
-            hello.txt
-            README.md
+          files: build.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
