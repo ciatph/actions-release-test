@@ -33,9 +33,12 @@ jobs:
         uses: actions/download-artifact@master
         with:
           name: main-out
+      - name: Extract Artifact Files
+        run: |
+          mkdir out
+          tar -zxvf build.tar.gz -C out
       - name: Deploy to Github Pages
         uses: peaceiris/actions-gh-pages@v3
-        run: tar -zxvf build.tar.gz
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./out
