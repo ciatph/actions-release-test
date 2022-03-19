@@ -1,0 +1,24 @@
+on:
+  push:
+    tags:
+      - 'v*'
+
+name: Upload Release Asset
+jobs:
+  build:
+    name: Build and Upload Release Asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Build app
+        run: |
+          echo 'Hello, world!' >> hello.txt
+      - name: Release with Notes
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            hello.txt
+            README.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
