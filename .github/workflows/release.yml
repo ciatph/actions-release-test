@@ -18,7 +18,7 @@ jobs:
           echo 'Hello, world!' >> out/hello.txt
           tar cvfz build.tar.gz out/
       - name: Archive Development Artifact
-        uses: actions/upload-artifact@master
+        uses: actions/upload-artifact@v3
         with:
           name: main-out
           path: build.tar.gz
@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifact
-        uses: actions/download-artifact@master
+        uses: actions/download-artifact@v3
         with:
           name: main-out
       - name: Extract Artifact Files
@@ -48,3 +48,5 @@ jobs:
           files: build.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
