@@ -1,0 +1,14 @@
+# .github/workflows/scheduled-builds.yml
+name: Hay Hello Every 5 Hours
+
+on:
+  schedule:
+    # Runs "at minute 0 past every 5th hour."
+    - cron: '0 */5 * * *'
+jobs:
+  runscript:
+    name: Say Hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hellooo
+        run: echo "Hello, world!"
