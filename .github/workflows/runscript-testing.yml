@@ -3,10 +3,9 @@ on:
     branches:
       - dev
 
-name: Run a NodeJS Script
 jobs:
-  build:
-    name: Run Script
+  run-script:
+    name: Run a NodeJS Script
     runs-on: ubuntu-latest
     env:
       - WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
