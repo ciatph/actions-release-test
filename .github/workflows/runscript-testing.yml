@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - dev
 
 name: Run a NodeJS Script
 jobs:
