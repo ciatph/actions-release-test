@@ -4,6 +4,7 @@
   "description": "Testing GitHub Actions workflows for releases.",
   "main": "index.js",
   "scripts": {
+    "start": "node src/run-me.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ciatph/actions-release-test/issues"
   },
-  "homepage": "https://github.com/ciatph/actions-release-test#readme"
+  "homepage": "https://github.com/ciatph/actions-release-test#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  }
 }

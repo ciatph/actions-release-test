@@ -1,5 +1,5 @@
 # .github/workflows/scheduled-builds.yml
-name: Hay Hello Every 5 Hours
+name: Say Hello Every 5 Hours
 
 on:
   schedule:

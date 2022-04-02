@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Run a NodeJS Script
+jobs:
+  build:
+    name: Run Script
+    runs-on: ubuntu-latest
+    env:
+      - WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Build and package app
+        run: npm start
