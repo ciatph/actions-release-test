@@ -1,3 +1,5 @@
+name: Run a NodeJS Script
+
 on:
   push:
     branches:
@@ -5,10 +7,10 @@ on:
 
 jobs:
   run-script:
-    name: Run a NodeJS Script
+    name: Run script
     runs-on: ubuntu-latest
     env:
-      - WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+      WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
     strategy:
       matrix:
         node-version: [14.x]
