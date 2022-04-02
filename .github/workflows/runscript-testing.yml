@@ -17,5 +17,8 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-      - name: Build and package app
+      - name: Install dependencies
+        run: npm install
+      - name: Run script
         run: npm start
+
