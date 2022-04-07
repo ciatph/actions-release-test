@@ -1,0 +1,24 @@
+name: Trigger Script on All Branches
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  run-script:
+    name: Run script
+    runs-on: ubuntu-latest
+    env:
+      WEBSITE_URL: ${{ secrets.WEBSITE_URL }}
+    strategy:
+      matrix:
+        node-version: [14.x]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm install
+      - name: Run script
+        run: npm start
+
