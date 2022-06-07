@@ -3,10 +3,10 @@ name: Say Hello and Cheese
 
 on:
   schedule:
-    # Runs "At every 15th minute."
-    - cron: '*/15 * * * *'
-    # Runs "At every 5th minute."
-    - cron: '*/5 * * * *'
+    # Runs "At minute 0 past every 3rd hour."
+    - cron: '0 */3 * * *'
+    # Runs "At minute 0 past every hour."
+    - cron: '0 */1 * * *'
 
 jobs:
   say-hello:
@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say Hellooo
-        if: github.event.schedule == '*/15 * * * *'
+        if: github.event.schedule == '0 */3 * * *'
         run: echo "Hello, world!"
 
   say-cheese:
@@ -22,5 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Say Cheese!
-        if: github.event.schedule == '*/5 * * * *'
+        if: github.event.schedule == '0 */1 * * *'
         run: echo "Cheese! :)"
