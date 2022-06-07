@@ -1,0 +1,26 @@
+# .github/workflows/scheduled-builds.yml
+name: Say Hello and Cheese
+
+on:
+  schedule:
+    # Runs "At every 15th minute."
+    - cron: '*/15 * * * *'
+    # Runs "At every 5th minute."
+    - cron: '*/5 * * * *'
+
+jobs:
+  say-hello:
+    name: Say Hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Hellooo
+        if: github.event.schedule == '*/15 * * * *'
+        run: echo "Hello, world!"
+
+  say-cheese:
+    name: Say Cheese
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say Cheese!
+        if: github.event.schedule == '*/5 * * * *'
+        run: echo "Cheese! :)"
